@@ -1,8 +1,13 @@
 var fs = require('fs');
 var readline = require('readline');
 
+if (process.argv.length != 3) {
+  console.error('usage: node hour-analysis.js file-name');
+  return 0;
+}
 var dataFile = process.argv[2];
 
+// empty 24 item array, intialized to 0 (dunno why it's so complicated in js)
 var hourCounts = Array.apply(null, Array(24)).map(function() { return 0; });
 
 // create readstream and use readline to loop over each line
